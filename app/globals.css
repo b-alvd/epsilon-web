@@ -41,7 +41,7 @@ body {
   font-size: 15px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  cursor: url("/cursor.png") 0 0, auto;
+  cursor: url("/cursor.png") 12 2, auto;
 }
 
 a,
@@ -49,7 +49,7 @@ button,
 [role="button"],
 input[type="submit"],
 label {
-  cursor: url("/cursor-hover.png") 0 0, pointer;
+  cursor: url("/cursor-hover.png") 12 2, pointer;
 }
 
 * {

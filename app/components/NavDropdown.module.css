@@ -1,0 +1,60 @@
+.wrap {
+  position: relative;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 3px;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--muted);
+  cursor: url("/cursor-hover.png") 0 0, pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.trigger:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+}
+
+.chevron {
+  display: flex;
+  transition: transform 0.2s ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 180px;
+  padding: 6px;
+  background: rgba(15, 9, 26, 0.98);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.item {
+  padding: 8px 12px;
+  border-radius: 3px;
+  font-size: 13px;
+  color: var(--muted);
+  transition: background 0.15s, color 0.15s;
+}
+
+.item:hover {
+  background: rgba(139, 92, 246, 0.15);
+  color: var(--text);
+}

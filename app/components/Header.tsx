@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./Header.module.css";
+import NavDropdown from "./NavDropdown";
 
 const NAV_LINKS = [
   { href: "/", label: "Accueil" },
@@ -38,6 +39,7 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
+            <NavDropdown />
           </nav>
         </div>
 

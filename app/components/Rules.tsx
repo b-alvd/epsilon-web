@@ -1,12 +1,7 @@
 import styles from "./Rules.module.css";
 import Reveal from "./Reveal";
 
-const RULES = [
-  "Le roleplay prime sur le gain : pas de comportement méta ou hors-sujet en jeu.",
-  "Respect entre joueurs et envers le staff, en toutes circonstances.",
-  "Le RDM, le VDM et le fail RP ne sont pas tolérés.",
-  "Un personnage cohérent, un background respecté, une histoire qui a du sens.",
-];
+const RULES = ["Règle à définir", "Règle à définir", "Règle à définir", "Règle à définir"];
 
 export default function Rules() {
   return (
@@ -19,7 +14,7 @@ export default function Rules() {
 
         <div className={styles.list}>
           {RULES.map((rule, i) => (
-            <Reveal delay={i * 60} key={rule}>
+            <Reveal delay={i * 60} key={i}>
               <p className={styles.item}>{rule}</p>
             </Reveal>
           ))}

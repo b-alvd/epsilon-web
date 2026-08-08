@@ -1,0 +1,146 @@
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 120px 24px 64px;
+  overflow: hidden;
+}
+
+.bg {
+  object-fit: cover;
+  z-index: -2;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    rgba(6, 3, 12, 0.75) 0%,
+    rgba(6, 3, 12, 0.85) 55%,
+    rgba(6, 3, 12, 0.95) 100%
+  );
+}
+
+.content {
+  position: relative;
+  max-width: 640px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  animation: fadeInUp 0.6s ease both;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.mark {
+  margin-right: -8px;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.4));
+}
+
+.title {
+  font-size: 46px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--text);
+}
+
+.subtitle {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.primary,
+.secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 3px;
+  transition: transform 0.15s, background 0.15s, opacity 0.15s;
+}
+
+.primary {
+  background: var(--purple-500);
+  color: #fff;
+}
+
+.primary:hover {
+  opacity: 0.88;
+}
+
+.secondary {
+  background: transparent;
+  border: 1px solid var(--border-s);
+  color: var(--text);
+}
+
+.secondary:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.dates {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+  font-size: 12px;
+  color: var(--dim);
+}
+
+.dateLabel {
+  color: var(--dim);
+}
+
+.dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--dim);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .title {
+    font-size: 30px;
+  }
+
+  .mark {
+    width: 30px;
+    height: 30px;
+  }
+}

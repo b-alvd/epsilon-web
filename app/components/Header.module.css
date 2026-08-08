@@ -1,0 +1,97 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: rgba(10, 6, 20, 0.6);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+}
+
+.inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 17px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.word {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.eLogo {
+  display: block;
+  margin-right: -4px;
+}
+
+.rp {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navLink {
+  padding: 6px 14px;
+  border-radius: 3px;
+  font-size: 13px;
+  color: var(--muted);
+  transition: background 0.15s, color 0.15s;
+}
+
+.navLink:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+}
+
+.cta {
+  background: var(--purple-500);
+  color: #fff;
+  border-radius: 3px;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: opacity 0.15s;
+}
+
+.cta:hover {
+  opacity: 0.88;
+}
+
+@media (max-width: 720px) {
+  .nav {
+    display: none;
+  }
+}

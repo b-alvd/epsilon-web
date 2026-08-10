@@ -2,11 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./Header.module.css";
 import NavDropdown from "./NavDropdown";
+import AuthButton from "./AuthButton";
 
 const NAV_LINKS = [
   { href: "/", label: "Accueil" },
   { href: "/regles", label: "Règles" },
-  { href: "/whitelist", label: "Whitelist" },
+  { href: "/profil", label: "Profil" },
 ];
 
 export default function Header() {
@@ -43,14 +44,7 @@ export default function Header() {
           </nav>
         </div>
 
-        <a
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.cta}
-        >
-          Rejoindre
-        </a>
+        <AuthButton />
       </div>
     </header>
   );

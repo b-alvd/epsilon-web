@@ -62,7 +62,7 @@ export default function Steps() {
         </div>
 
         <Reveal>
-          <a href="/whitelist" className={styles.cta}>
+          <a href="/profil" className={styles.cta}>
             Postuler à la whitelist
           </a>
         </Reveal>

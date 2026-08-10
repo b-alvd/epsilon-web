@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
-  title: "Règlement — Epsilon Roleplay",
+  title: "Règlement - Epsilon Roleplay",
   description: "Le règlement complet du serveur Epsilon Roleplay.",
 };
 

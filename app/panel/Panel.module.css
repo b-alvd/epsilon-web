@@ -1,0 +1,89 @@
+/* ─────────────────────────────────────────────
+   Styles partagés du panel — grille, cards,
+   header de page.
+   ───────────────────────────────────────────── */
+
+/* ── Header de page ── */
+.pageContainer {
+  width: 100%;
+}
+
+.pageHeader {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+}
+
+.pageBadge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--purple-400);
+}
+
+.pageTitle {
+  margin-top: 8px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+/*
+  Grille fluide : colonnes min 300px, max 1fr (stretch).
+  Les cartes s'étendent équitablement et ont la même hauteur
+  sur la même ligne grâce à align-items: stretch.
+*/
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+  align-items: stretch;
+}
+
+/* ── Card de base ── */
+.card {
+  padding: 20px 24px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Card pleine largeur ── */
+.cardFull {
+  grid-column: 1 / -1;
+}
+
+/* ── Éléments internes réutilisables ── */
+.sectionLabel {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--dim);
+  margin-bottom: 14px;
+}
+
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 14px 0;
+}
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+
+.cardText {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--muted);
+}

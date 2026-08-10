@@ -1,0 +1,422 @@
+/* ── Cards ── */
+.card {
+  padding: 28px 32px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+}
+
+.cardNarrow {
+  max-width: 600px;
+}
+
+.cardTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+
+.cardText {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+/* ── Status banner ── */
+.banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+}
+
+.banner .statusDot {
+  margin-top: 4px;
+  margin-right: 0;
+}
+
+.bannerTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.bannerText {
+  margin-top: 3px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.bannerLink {
+  display: inline-flex;
+  margin-top: 10px;
+  padding: 7px 14px;
+  background: var(--purple-500);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: var(--r);
+  transition: opacity 0.15s;
+}
+
+.bannerLink:hover { opacity: 0.85; }
+
+/* ── Sub-section label ── */
+.subTitle {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--dim);
+  margin: 26px 0 12px;
+}
+
+/* ── Discord account block ── */
+.discordAccount {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+}
+
+.discordAccount > div:nth-child(2) { flex: 1; }
+
+.discordAvatar {
+  border-radius: 50%;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.discordName {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.discordEmail {
+  font-size: 11px;
+  color: var(--dim);
+  margin-top: 2px;
+}
+
+/* ── Guild badge ── */
+.guildBadge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 10px;
+  border-radius: var(--r);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.guildBadge .statusDot {
+  margin-right: 0;
+  width: 6px;
+  height: 6px;
+}
+
+.guildBadgeIn {
+  background: rgba(34, 197, 94, 0.1);
+  color: var(--green);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.guildBadgeIn .statusDot { background: var(--green); }
+
+.guildBadgeOut {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--red);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.guildBadgeOut .statusDot { background: var(--red); }
+
+/* ── Form fields ── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 16px;
+}
+
+.label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--dim);
+}
+
+.input,
+.textarea {
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 9px 12px;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--text);
+  transition: border-color 0.12s, background 0.12s;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: var(--purple-500);
+  background: rgba(139, 92, 246, 0.05);
+}
+
+.input:disabled,
+.textarea:disabled {
+  opacity: 0.45;
+}
+
+.textarea { resize: vertical; min-height: 90px; }
+
+.textareaLarge {
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--text);
+  resize: vertical;
+  min-height: 200px;
+  transition: border-color 0.12s, background 0.12s;
+}
+
+.textareaLarge:focus {
+  outline: none;
+  border-color: var(--purple-500);
+  background: rgba(139, 92, 246, 0.05);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.rowThree {
+  display: grid;
+  grid-template-columns: 1fr 1fr 90px;
+  gap: 14px;
+}
+
+/* ── Error ── */
+.error {
+  font-size: 12px;
+  color: var(--red);
+  margin-bottom: 14px;
+  padding: 8px 12px;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.18);
+  border-radius: var(--r);
+}
+
+/* ── Buttons ── */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 20px;
+  background: var(--purple-500);
+  color: #fff;
+  border: 1px solid var(--purple-500);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: var(--r);
+  letter-spacing: 0.03em;
+  transition: opacity 0.12s;
+  cursor: url("/cursor-hover.png") 12 2, pointer;
+}
+
+.button:hover { opacity: 0.85; }
+.button:disabled { opacity: 0.4; cursor: default; }
+
+.buttonSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 20px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+  border: 1px solid var(--border-s);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: var(--r);
+  transition: background 0.12s, color 0.12s;
+  cursor: url("/cursor-hover.png") 12 2, pointer;
+}
+
+.buttonSecondary:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--text);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+/* ── Quiz ── */
+.rulesList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 18px;
+  margin-bottom: 8px;
+  list-style: disc;
+}
+
+.rulesList li {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.attemptsInfo {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--purple-300);
+}
+
+.quizHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.attemptsBadge {
+  flex-shrink: 0;
+  padding: 6px 12px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.timerFixed {
+  position: fixed;
+  top: 20px;
+  right: 36px;
+  z-index: 100;
+  padding: 8px 16px;
+  background: rgba(8, 4, 15, 0.9);
+  border: 1px solid var(--border-s);
+  border-radius: var(--r);
+  font-size: 16px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--text);
+  letter-spacing: 0.04em;
+}
+
+.timerLow {
+  border-color: rgba(239, 68, 68, 0.5);
+  color: var(--red);
+}
+
+.quizGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 1100px) { .quizGrid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 720px)  { .quizGrid { grid-template-columns: 1fr; } }
+
+.quizQuestion {
+  padding: 14px 16px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+}
+
+.quizQuestionText {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.quizOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.quizOption {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  font-size: 12px;
+  color: var(--muted);
+  cursor: url("/cursor-hover.png") 12 2, pointer;
+  transition: border-color 0.1s, background 0.1s, color 0.1s;
+}
+
+.quizOption:hover {
+  border-color: var(--border-s);
+  background: rgba(147, 51, 234, 0.07);
+  color: var(--text);
+}
+
+.quizOptionSelected {
+  border-color: var(--purple-500);
+  background: rgba(139, 92, 246, 0.15);
+  color: var(--text);
+}
+
+.result {
+  text-align: center;
+  padding: 8px 0 16px;
+}
+
+.resultScore {
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.resultLabel {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ── Shared dot ── */
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  flex-shrink: 0;
+}

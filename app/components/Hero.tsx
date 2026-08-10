@@ -39,7 +39,7 @@ export default function Hero() {
           >
             Rejoindre le Discord
           </a>
-          <a href="/whitelist" className={styles.secondary}>
+          <a href="/profil" className={styles.secondary}>
             Postuler à la whitelist
           </a>
         </div>

@@ -5,7 +5,7 @@ import styles from "./Footer.module.css";
 const LINKS = [
   { href: "/", label: "Accueil" },
   { href: "/regles", label: "Règles" },
-  { href: "/whitelist", label: "Whitelist" },
+  { href: "/profil", label: "Profil" },
 ];
 
 export default function Footer() {

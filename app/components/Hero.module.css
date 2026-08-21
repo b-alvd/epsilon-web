@@ -1,10 +1,11 @@
 .hero {
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding: 120px 24px 64px;
+  padding: 120px 24px 100px;
   overflow: hidden;
 }
 
@@ -19,128 +20,163 @@
   z-index: -1;
   background: linear-gradient(
     180deg,
-    rgba(10, 6, 20, 0.7) 0%,
-    rgba(10, 6, 20, 0.82) 50%,
+    rgba(10, 6, 20, 0.55) 0%,
+    rgba(10, 6, 20, 0.78) 60%,
     var(--bg) 100%
   );
 }
 
 .content {
   position: relative;
-  max-width: 640px;
+  max-width: 680px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 14px;
-  animation: fadeInUp 0.6s ease both;
+  gap: 16px;
+  animation: fadeInUp 0.7s ease both;
 }
 
+/* ── Eyebrow ── */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--dim);
+}
+
+.eyebrowDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--purple-400);
+  flex-shrink: 0;
+}
+
+/* ── Title ── */
 .titleRow {
   display: flex;
   align-items: center;
   gap: 0;
+  margin-top: 4px;
 }
 
 .mark {
-  margin-right: -8px;
-  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.4));
+  margin-right: -10px;
+  filter: drop-shadow(0 4px 24px rgba(139, 92, 246, 0.4));
 }
 
 .title {
-  font-size: 46px;
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  font-size: 56px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
   line-height: 1;
   color: var(--text);
 }
 
+/* ── Subtitle ── */
 .subtitle {
   font-size: 15px;
-  font-weight: 400;
+  line-height: 1.7;
   color: var(--muted);
+  max-width: 480px;
+  margin-top: 4px;
 }
 
+/* ── Actions ── */
 .actions {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 .primary,
 .secondary {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 11px 20px;
+  padding: 12px 22px;
   font-size: 13px;
   font-weight: 600;
   border-radius: 3px;
-  transition: transform 0.15s, background 0.15s, opacity 0.15s;
+  transition: opacity 0.15s, background 0.15s;
 }
 
 .primary {
   background: var(--purple-500);
   color: #fff;
 }
-
-.primary:hover {
-  opacity: 0.88;
-}
+.primary:hover { opacity: 0.88; }
 
 .secondary {
   background: transparent;
   border: 1px solid var(--border-s);
   color: var(--text);
 }
+.secondary:hover { background: rgba(255, 255, 255, 0.06); }
 
-.secondary:hover {
-  background: rgba(255, 255, 255, 0.06);
-}
-
+/* ── Dates ── */
 .dates {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 18px;
+  gap: 12px;
+  margin-top: 12px;
   font-size: 12px;
   color: var(--dim);
 }
 
 .dateLabel {
-  color: var(--dim);
+  margin-left: 5px;
+  color: var(--purple-400);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 10px;
 }
 
-.dot {
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: var(--dim);
+.sep {
+  width: 1px;
+  height: 14px;
+  background: var(--border);
+}
+
+/* ── Scroll hint ── */
+.scrollHint {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scrollLine {
+  display: block;
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, transparent, var(--border-s));
+  animation: scrollFade 2s ease-in-out infinite;
+}
+
+@keyframes scrollFade {
+  0%, 100% { opacity: 0; transform: scaleY(0.5); transform-origin: top; }
+  50%       { opacity: 1; transform: scaleY(1); }
 }
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @media (max-width: 640px) {
-  .title {
-    font-size: 30px;
-  }
-
-  .mark {
-    width: 30px;
-    height: 30px;
-  }
+  .title { font-size: 36px; }
+  .mark  { width: 36px; height: 36px; }
 }

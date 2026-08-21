@@ -1,13 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./Header.module.css";
-import NavDropdown from "./NavDropdown";
 import AuthButton from "./AuthButton";
 
 const NAV_LINKS = [
   { href: "/", label: "Accueil" },
   { href: "/regles", label: "Règles" },
-  { href: "/profil", label: "Profil" },
+  { href: "/streamers", label: "Streamers" },
 ];
 
 export default function Header() {
@@ -40,7 +39,6 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <NavDropdown />
           </nav>
         </div>
 

@@ -186,9 +186,9 @@ export default function AdminContent() {
                   <div>
                     <span className={styles.userName}>{app.discord_name ?? app.discord_id}</span>
                     <span className={styles.userSub}>
-                      {app.playtime_hours != null ? `${app.playtime_hours}h` : "—"}
+                      {app.playtime_hours != null ? `${app.playtime_hours}h` : "-"}
                       {" · "}
-                      {app.age != null ? `${app.age} ans` : "—"}
+                      {app.age != null ? `${app.age} ans` : "-"}
                     </span>
                   </div>
                 </div>

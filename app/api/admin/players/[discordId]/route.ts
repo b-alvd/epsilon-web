@@ -66,7 +66,7 @@ export async function GET(
        c.lastname,
        c.dob,
        c.gender,
-       c.cash,
+       COALESCE(i.quantity, 0)  AS cash,
        c.slot,
        c.last_played,
        b.balance,
@@ -78,13 +78,14 @@ export async function GET(
      LEFT JOIN bank_accounts b  ON b.character_id = c.id
      LEFT JOIN job_sessions js  ON js.character_id = c.id AND js.is_active = 1
      LEFT JOIN jobs j           ON j.id = js.job_id
+     LEFT JOIN player_items i   ON i.character_id = c.id AND i.name = 'money'
      WHERE c.player_id = ?
      ORDER BY c.last_played DESC`,
     [playerRows[0].player_id]
   );
 
   const raw = playerRows[0] as Record<string, unknown>;
-  const IDENTIFIER_KEYS = ["discord", "license", "license2", "steam", "xbl", "live", "fivem", "ip"];
+  const IDENTIFIER_KEYS = ["discord", "license", "license2", "steam", "xbl", "live", "fivem"];
   const identifiers: Record<string, string> = { uid: String(raw.id) };
   for (const key of IDENTIFIER_KEYS) {
     if (raw[key] && typeof raw[key] === "string") {

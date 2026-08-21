@@ -9,7 +9,18 @@ import styles from "./ProfilContent.module.css";
 
 const DISMISS_KEY = "epsilon-wl-banner-dismissed";
 
+const STREAMER_REGLEMENT = `En tant que streamer affilié Epsilon Roleplay, tu t'engages à :
+
+• Respecter le règlement du serveur en toutes circonstances, y compris en stream.
+• Ne pas streamer de situations interdites par les règles (metagaming, cheats, etc.).
+• Inclure [Epsilon RP] dans le titre de ton stream lorsque tu joues sur notre serveur.
+• Maintenir une image positive du serveur vis-à-vis de ta communauté.
+• Prévenir le staff en cas de problème lié au stream sur le serveur.
+
+Le non-respect de ces règles peut entraîner le retrait du statut streamer sans préavis.`;
+
 type TwitchData = { id: string; username: string; avatar: string | null } | null;
+type StreamerApp = { id: number; status: string; twitch_username: string; created_at: string } | null;
 
 interface Character {
   char_id: number;
@@ -53,6 +64,9 @@ export default function ProfilContent() {
   const [twitchFeedback, setTwitchFeedback] = useState<"ok" | "error" | null>(null);
   const [characters, setCharacters] = useState<Character[]>([]);
   const [identifiers, setIdentifiers] = useState<Record<string, string> | null>(null);
+  const [streamerApp, setStreamerApp] = useState<StreamerApp>(undefined as unknown as StreamerApp);
+  const [streamerLoading, setStreamerLoading] = useState(false);
+  const [reglementOpen, setReglementOpen] = useState(false);
 
   useEffect(() => {
     setBannerDismissed(localStorage.getItem(DISMISS_KEY) === "1");
@@ -74,8 +88,24 @@ export default function ProfilContent() {
           setCharacters(d.characters ?? []);
           if (d.identifiers) setIdentifiers(d.identifiers);
         });
+      fetch("/api/streamer")
+        .then((r) => r.json())
+        .then((d) => setStreamerApp(d.application));
     }
   }, [status]);
+
+  async function applyStreamer() {
+    setStreamerLoading(true);
+    const res = await fetch("/api/streamer", { method: "POST" });
+    if (res.ok) {
+      const d = await res.json();
+      if (d.ok) {
+        const me = await fetch("/api/streamer").then((r) => r.json());
+        setStreamerApp(me.application);
+      }
+    }
+    setStreamerLoading(false);
+  }
 
   async function disconnectTwitch() {
     setTwitchLoading(true);
@@ -114,6 +144,21 @@ export default function ProfilContent() {
 
   return (
     <div className={panel.grid}>
+      {/* ── Encart whitelist acceptée ── */}
+      {isAccepted && !bannerDismissed && (
+        <div className={`${styles.wlCard} ${panel.cardFull}`}>
+          <div className={styles.wlTop}>
+            <div className={styles.wlTopLeft}>
+              <span className={styles.wlDot} />
+              <span className={styles.wlLabel}>Whitelist</span>
+            </div>
+            <button type="button" className={styles.wlDismiss} onClick={dismissBanner} title="Masquer">✕</button>
+          </div>
+          <p className={styles.wlTitle}>Tu es whitelisté</p>
+          <p className={styles.wlText}>Bienvenue sur Epsilon Roleplay. Connecte-toi en jeu avec ton personnage.</p>
+        </div>
+      )}
+
       {/* ── Carte Discord ── */}
       <div className={panel.card}>
         <p className={panel.sectionLabel}>Compte Discord</p>
@@ -198,24 +243,9 @@ export default function ProfilContent() {
         </div>
       )}
 
-      {/* ── Encart whitelist acceptée ── */}
-      {isAccepted && !bannerDismissed && (
-        <div className={`${styles.wlCard} ${panel.cardFull}`}>
-          <div className={styles.wlTop}>
-            <div className={styles.wlTopLeft}>
-              <span className={styles.wlDot} />
-              <span className={styles.wlLabel}>Whitelist</span>
-            </div>
-            <button type="button" className={styles.wlDismiss} onClick={dismissBanner} title="Masquer">✕</button>
-          </div>
-          <p className={styles.wlTitle}>Tu es whitelisté</p>
-          <p className={styles.wlText}>Bienvenue sur Epsilon Roleplay. Connecte-toi en jeu avec ton personnage.</p>
-        </div>
-      )}
-
       {/* ── Identifiants ── */}
       {identifiers && Object.keys(identifiers).length > 0 && (
-        <div className={panel.card}>
+        <div className={`${panel.card} ${styles.identCard}`}>
           <p className={panel.sectionLabel}>Identifiants</p>
           <div className={styles.identGrid}>
             {Object.entries(identifiers).map(([key, value]) => (
@@ -225,6 +255,64 @@ export default function ProfilContent() {
               </div>
             ))}
           </div>
+        </div>
+      )}
+
+      {/* ── Streamer ── */}
+      {twitch && streamerApp !== (undefined as unknown as StreamerApp) && (
+        <div className={`${panel.card} ${panel.cardFull}`}>
+          <p className={panel.sectionLabel}>Streamer Epsilon</p>
+
+          {streamerApp === null ? (
+            <>
+              <p className={panel.cardText} style={{ marginBottom: 16 }}>
+                Ton compte Twitch est lié. Tu peux candidater pour devenir streamer affilié Epsilon Roleplay.
+                Lis le règlement avant de soumettre ta demande.
+              </p>
+
+              <button
+                type="button"
+                className={styles.reglementToggle}
+                onClick={() => setReglementOpen((o) => !o)}
+              >
+                {reglementOpen ? "Masquer le règlement ↑" : "Lire le règlement streamer ↓"}
+              </button>
+
+              {reglementOpen && (
+                <pre className={styles.reglementText}>{STREAMER_REGLEMENT}</pre>
+              )}
+
+              <div style={{ flex: 1 }} />
+              <div className={panel.divider} />
+
+              <button
+                type="button"
+                className={styles.button}
+                onClick={applyStreamer}
+                disabled={streamerLoading || !reglementOpen}
+                title={!reglementOpen ? "Lis d'abord le règlement" : undefined}
+              >
+                {streamerLoading ? "Envoi en cours..." : "Soumettre ma candidature"}
+              </button>
+            </>
+          ) : (
+            <div className={styles.streamerStatus}>
+              <span className={styles.streamerStatusLabel}>Statut de ta candidature</span>
+              <span className={`${styles.streamerBadge} ${
+                streamerApp.status === "accepted" ? styles.badgeGreen :
+                streamerApp.status === "refused"  ? styles.badgeRed   : styles.badgeAmber
+              }`}>
+                {streamerApp.status === "accepted" ? "Acceptée" :
+                 streamerApp.status === "refused"  ? "Refusée"  : "En attente"}
+              </span>
+              {streamerApp.status === "accepted" && (
+                <p className={styles.streamerHint}>
+                  Tu apparais sur la page streamers. Pour être affiché en live, inclus{" "}
+                  <code>[Epsilon RP]</code> dans le titre de ton stream.
+                </p>
+              )}
+            </div>
+          )}
         </div>
       )}
 

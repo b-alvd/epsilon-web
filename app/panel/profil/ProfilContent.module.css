@@ -159,6 +159,10 @@
 }
 
 /* ── Identifiants ── */
+.identCard {
+  grid-column: span 2;
+}
+
 .identGrid {
   display: flex;
   flex-direction: column;
@@ -167,25 +171,29 @@
 
 .identItem {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 10px;
+  min-width: 0;
 }
 
 .identKey {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--dim);
-  width: 72px;
+  width: 82px;
   flex-shrink: 0;
 }
 
 .identVal {
-  font-size: 11px;
+  font-size: 13px;
   font-family: monospace;
   color: var(--muted);
-  word-break: break-all;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
 }
 
 /* ── Personnages ── */
@@ -353,3 +361,76 @@
   border-color: rgba(239, 68, 68, 0.5);
 }
 .buttonDanger:disabled { opacity: 0.5; cursor: default; }
+.button:disabled { opacity: 0.4; cursor: default; }
+
+/* ── Streamer ── */
+.reglementToggle {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--purple-400);
+  cursor: url("/cursor-hover.png") 12 2, pointer;
+  margin-bottom: 4px;
+  transition: color 0.12s;
+}
+.reglementToggle:hover { color: var(--purple-300); }
+
+.reglementText {
+  white-space: pre-wrap;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--muted);
+  background: rgba(0,0,0,0.18);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 14px 16px;
+  margin-bottom: 8px;
+}
+
+.streamerStatus {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.streamerStatusLabel {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.streamerBadge {
+  padding: 3px 10px;
+  border-radius: var(--r);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: 1px solid transparent;
+}
+
+.badgeAmber {
+  background: rgba(245,158,11,0.1);
+  color: #f59e0b;
+  border-color: rgba(245,158,11,0.25);
+}
+
+.streamerHint {
+  width: 100%;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.streamerHint code {
+  font-family: monospace;
+  font-size: 11px;
+  background: rgba(255,255,255,0.07);
+  padding: 1px 5px;
+  border-radius: 3px;
+  color: var(--purple-300);
+}

@@ -85,8 +85,9 @@ const WHITELIST_ITEMS = [
 ];
 
 const ADMIN_ITEMS = [
-  { href: "/panel/admin",         label: "Candidatures", Icon: IconList,   exact: true },
-  { href: "/panel/admin/joueurs", label: "Joueurs",      Icon: IconPerson, exact: false },
+  { href: "/panel/admin",            label: "Candidatures", Icon: IconList,    exact: true },
+  { href: "/panel/admin/joueurs",    label: "Joueurs",      Icon: IconPerson,  exact: false },
+  { href: "/panel/admin/streamers",  label: "Streamers",    Icon: IconGamepad, exact: false },
 ];
 
 export default function Sidebar() {

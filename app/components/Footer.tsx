@@ -4,8 +4,9 @@ import styles from "./Footer.module.css";
 
 const LINKS = [
   { href: "/", label: "Accueil" },
-  { href: "/regles", label: "Règles" },
-  { href: "/profil", label: "Profil" },
+  { href: "/regles", label: "Règlement" },
+  { href: "/streamers", label: "Streamers" },
+  { href: "/panel/profil", label: "Mon profil" },
 ];
 
 export default function Footer() {
@@ -42,7 +43,7 @@ export default function Footer() {
           </a>
         </nav>
 
-        <p className={styles.copy}>© Epsilon Roleplay 2026</p>
+        <p className={styles.copy}>© Epsilon Roleplay 2026 · Développé par b_alvd</p>
       </div>
     </footer>
   );

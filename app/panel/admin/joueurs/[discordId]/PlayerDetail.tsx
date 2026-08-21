@@ -134,7 +134,7 @@ export default function PlayerDetail({ discordId }: { discordId: string }) {
         </div>
         {player.whitelist_status && (
           <span className={`${styles.badge} ${WL_CLASS[player.whitelist_status] ?? styles.badgeGray}`}>
-            WL — {WL_LABEL[player.whitelist_status] ?? player.whitelist_status}
+            WL - {WL_LABEL[player.whitelist_status] ?? player.whitelist_status}
           </span>
         )}
       </div>
